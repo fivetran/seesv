@@ -1,0 +1,10 @@
+{
+  "name": "seesv",
+  "description": "Command line CSV viewer",
+  "version": "0.0.1",
+  "main": "lib/",
+  "bin": "lib/main.js",
+  "dependencies": {
+    "csv-parse": "0.1.3"
+  }
+}
