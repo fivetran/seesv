@@ -24,7 +24,8 @@ var widths = [];
 function updateWidths(row: string[]) {
     for (var i = 0; i < row.length; i++) {
         // Pad by 1 character
-        var fieldWidth = row[i].length + 1;
+        var length = Math.min(20, row[i].length);
+        var fieldWidth = length + 1;
 
         if (widths[i] == null || fieldWidth > widths[i])
             widths[i] = fieldWidth;
@@ -34,6 +35,11 @@ function updateWidths(row: string[]) {
 function printRow(row: string[]) {
     for (var i = 0; i < row.length; i++) {
         var field = row[i];
+
+        if (field.length > 20)
+            field = field.substring(0, 17) + "...";
+
+        field = field.replace(/[\r\n]+/, '\u00b6');
 
         // Write field to stdout
         process.stdout.write(field);
